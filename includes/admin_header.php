@@ -4,6 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 require_once "authentication.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +18,7 @@ require_once "authentication.php";
 <header>
     <div class="logo">
         <h1>logo</h1>
+        <h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
     </div>
     <nav>
         <a href="admin_dashboard.php">Home</a>
@@ -26,5 +28,4 @@ require_once "authentication.php";
         <a href="../includes/logout.php" class="logout-btn">Logout</a>
     </nav>
 </header>
-
 <main>

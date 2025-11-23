@@ -10,13 +10,13 @@ require_once "authentication.php";
 <head>
     <meta charset="UTF-8">
     <title><?php echo isset($page_title) ? $page_title : 'Dashboard'; ?></title>
-    <link rel="stylesheet" href="../assests/css/admin_header.css">
+    <link rel="stylesheet" href="../assets/css/admin_header.css">
 </head>
 <body>
 
 <header>
     <div class="logo">
-        <h1>My Dashboard</h1>
+        <h1>logo</h1>
     </div>
     <nav>
         <a href="admin_dashboard.php">Home</a>

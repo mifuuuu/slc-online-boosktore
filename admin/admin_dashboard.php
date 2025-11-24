@@ -14,6 +14,7 @@
     <h1>Admin Dashboard</h1>
 
     <!-- Stats Cards -->
+     <h1>statistics</h1>
     <div class="stats">
         <div class="card">
             <h2>75</h2>
@@ -26,6 +27,23 @@
             <p>Total Completed Orders</p>
         </div>
     </div>
+
+        <!-- Low Stock Alerts -->
+    <h2>Low Stock Items</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Item ID</th>
+                <th>SKU Code</th>
+                <th>Item Name</th>
+                <th>Image</th>
+                <th>Stock</th>
+                <th>Date Added</th>
+            </tr>
+        </thead>
+        <tbody id="low_on_stock_items">
+        </tbody>
+    </table>
 
     <!-- Recent Orders Table -->
     <h2>Recent Orders</h2>
@@ -43,25 +61,9 @@
         <tbody id="recent_orders_table_body">
         </tbody>
     </table>
-
-    <!-- Low Stock Alerts -->
-    <h2>Low Stock Items</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Item ID</th>
-                <th>SKU Code</th>
-                <th>Item Name</th>
-                <th>Image</th>
-                <th>Stock</th>
-                <th>Date Added</th>
-            </tr>
-        </thead>
-        <tbody id="low_on_stock_items">
-        </tbody>
-    </table>
 </div>
 <script src="../assets/js/get_orders.js"></script>
 <script src="../assets/js/get_items.js"></script>
+<php><?php require_once "../includes/footer.php";?></php>
 </body>
 </html>

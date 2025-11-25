@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2025 at 06:32 AM
+-- Generation Time: Nov 25, 2025 at 06:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -30,13 +30,22 @@ SET time_zone = "+00:00";
 CREATE TABLE `items` (
   `item_id` int(11) NOT NULL,
   `sku` varchar(50) NOT NULL,
-  `item_name` int(255) NOT NULL,
+  `item_name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `item_price` decimal(10,2) NOT NULL,
   `stock` int(11) NOT NULL DEFAULT 0,
   `image` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `items`
+--
+
+INSERT INTO `items` (`item_id`, `sku`, `item_name`, `description`, `item_price`, `stock`, `image`, `created_at`) VALUES
+(1, 'SKU-2001', 'Pilot Rollerball Pen G-TEC-C3 0.3mm Black', 'Ultra-fine 0.3mm black rollerball pen with smooth, precise writing. Perfect for school, notes, and technical writing.', 65.00, 80, 'uploads/pilot_gtec_c3_black.jpg', '2025-11-23 14:24:55'),
+(2, 'SKU-3002', 'Victory Yellow Ruled Pad', 'High-quality yellow ruled pad ideal for school notes, assignments, and general writing. Smooth paper and durable binding.', 35.00, 60, 'uploads/victory_yellow_ruled_pad.jpg', '2025-11-23 14:30:50'),
+(3, 'SKU-4001', 'Valiant Typewriting Paper Short 20\'s 70gsm', 'High-quality 70gsm typewriting paper (short size), pack of 20 sheets. Ideal for school projects, office documents, printing, and photocopying. Smooth finish and durable texture.', 28.00, 8, '../uploads/valiant_typewriting_short_20.jpg', '2025-11-23 14:34:24');
 
 -- --------------------------------------------------------
 
@@ -53,10 +62,17 @@ CREATE TABLE `orders` (
   `phone` varchar(50) NOT NULL,
   `total` decimal(10,2) NOT NULL,
   `payment_method` varchar(50) NOT NULL,
-  `payment_status` enum('pending','paid') NOT NULL DEFAULT 'pending',
+  `payment_status` enum('pending','completed') NOT NULL DEFAULT 'pending',
   `order_status` enum('processing','done','cancelled') NOT NULL DEFAULT 'processing',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `order_code`, `student_name`, `student_id`, `email`, `phone`, `total`, `payment_method`, `payment_status`, `order_status`, `created_at`) VALUES
+(1, '12334', 'cylan', '23100783', 'cylan@gmail.com', '09164200150', 250.00, 'GCASH', 'completed', 'processing', '2025-11-23 13:12:34');
 
 -- --------------------------------------------------------
 
@@ -159,13 +175,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `order_items`

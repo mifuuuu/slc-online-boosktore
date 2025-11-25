@@ -1,3 +1,4 @@
+/* admin dashboard - homepage u.i */
 table{
     width: 100%;
     border-collapse: collapse;
@@ -21,3 +22,5 @@ td{
     font-weight: bold;
     color: black;
 }
+
+/* admin dashboard - inventory */

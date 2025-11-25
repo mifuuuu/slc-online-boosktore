@@ -6,8 +6,9 @@ $(document).ready(() => {
             type: "GET",
             success: (res) => {
                 // filtering logic, gets low stock if stock goes to 10
-                const lowStockItems = res.data.filter(item => item.stock < 10);
+                const lowStockItems = res.data.filter(item => item.stock <= 10);
                 uiRender(lowStockItems);
+                uiRenderInventory(res.data);
             }
         });
     };
@@ -28,5 +29,25 @@ $(document).ready(() => {
             container.append(row);
         });
     };
-});
 
+    const uiRenderInventory = (items) => {
+        const container = $("#inventory_table");
+        container.empty();
+        $.each(items, (index, item) => {
+            const row = `<tr>
+                <td>${index + 1}</td>
+                <td>${item.sku}</td>
+                <td>${item.item_name}</td>
+                <td>${item.description}</td>
+                <td>${item.item_price}</td>
+                <td><img src="${item.image}" alt="${item.item_name}" width="50"></td>
+                <td>${item.stock}</td>
+                <td>${item.created_at}</td>
+                <td>
+                    <button>Edit</button>
+                </td>
+            </tr>`;
+            container.append(row);
+        });
+    };
+});

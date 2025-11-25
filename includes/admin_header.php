@@ -10,7 +10,6 @@ require_once "authentication.php";
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo isset($page_title) ? $page_title : 'Dashboard'; ?></title>
     <link rel="stylesheet" href="../assets/css/admin_header.css">
 </head>
 <body>

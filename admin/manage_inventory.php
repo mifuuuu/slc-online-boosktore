@@ -8,6 +8,6 @@
     <title>Inventory</title>
 </head>
 <body>
-x
+        
 </body>
 </html>

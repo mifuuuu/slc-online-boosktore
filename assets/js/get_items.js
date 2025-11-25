@@ -1,10 +1,11 @@
+alert("JS file items loaded");
 $(document).ready(() => {
     const getItems = () => {
         $.ajax({
             url: "../includes/functions/get_items.php",
             type: "GET",
             success: (res) => {
-                // Filter items with stock less than 10
+                // filtering logic, gets low stock if stock goes to 10
                 const lowStockItems = res.data.filter(item => item.stock < 10);
                 uiRender(lowStockItems);
             }

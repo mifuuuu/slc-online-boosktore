@@ -15,18 +15,19 @@
 
     <!-- Stats Cards -->
      <h1>statistics</h1>
-    <div class="stats">
-        <div class="card">
-            <h2>75</h2>
-            <p>Total Pending Orders</p>
+        <div class="stats">
+            <div class="card">
+                <p>Total Pending Orders</p>
+                <h2 id="pendingCount">0</h2>
+            </div>
         </div>
-    </div>
-    <div class="stats">
-        <div class="card">
-            <h2>75</h2>
-            <p>Total Completed Orders</p>
+
+        <div class="stats">
+            <div class="card">
+                <p>Total Completed Orders</p>
+                <h2 id="completedCount">0</h2>
+            </div>
         </div>
-    </div>
 
         <!-- Low Stock Alerts -->
     <h2>Low Stock Items</h2>
@@ -64,6 +65,6 @@
 </div>
 <script src="../assets/js/get_orders.js"></script>
 <script src="../assets/js/get_items.js"></script>
-<php><?php require_once "../includes/footer.php";?></php>
+<?php require_once "../includes/footer.php"; ?>
 </body>
 </html>

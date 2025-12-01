@@ -44,7 +44,11 @@ $(document).ready(() => {
                 <td>${item.stock}</td>
                 <td>${item.created_at}</td>
                 <td>
-                    <button>Edit</button>
+                    <button 
+                      type="button" 
+                      class="btn btn-sm btn-warning btn_editUser" 
+                      data-id="${item.id}">
+                    </button>
                 </td>
             </tr>`;
             container.append(row);

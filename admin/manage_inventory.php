@@ -22,15 +22,15 @@
                 <button type="submit">Add Item</button>
          </form>
     </div>
-    <h2>Low Stock Items</h2>
+    <h2>Inventory</h2>
     <table>
         <thead>
             <tr>
                 <th>Item ID</th>
                 <th>SKU Code</th>
                 <th>Item Name</th>
-                <th>Price</th>
                 <th>Description</th>
+                <th>Price</th>
                 <th>Image</th>
                 <th>Stock</th>
                 <th>Date Added</th>

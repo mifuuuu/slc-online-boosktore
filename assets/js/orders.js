@@ -1,4 +1,3 @@
-alert("JS file orders loaded");
 $(document).ready(() => {
     const getOrders = () => {
         $.ajax({

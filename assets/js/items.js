@@ -1,5 +1,3 @@
-// alert("update nga");
-
 $(document).ready(() => {
     const getItems = () => {
         $.ajax({
@@ -81,9 +79,6 @@ $(document).ready(() => {
                 console.log(res);
                 $("#add_item_form")[0].reset();
             },
-            error: function(err) {
-                console.error(err);
-            }
         });
     });
 

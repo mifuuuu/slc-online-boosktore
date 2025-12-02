@@ -20,7 +20,7 @@ require_once "authentication.php";
         <h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
     </div>
     <nav>
-        <a href="admin_dashboard.php">Home</a>
+        <a href="admin_home.php">Home</a>
         <a href="manage_inventory.php">Inventory</a>
         <a href="manage_staff.php">Staff</a>
         <a href="reports.php">Reports</a>

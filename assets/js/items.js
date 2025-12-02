@@ -1,3 +1,5 @@
+// alert("update nga");
+
 $(document).ready(() => {
     const getItems = () => {
         $.ajax({
@@ -21,7 +23,7 @@ $(document).ready(() => {
                 <td>${index + 1}</td>
                 <td>${item.sku}</td>
                 <td>${item.item_name}</td>
-                <td><img src="${item.image}" alt="${item.item_name}" width="50"></td>
+                <td><img src="data:image/jpeg;base64,${item.image}" width="50"></td>
                 <td>${item.stock}</td>
                 <td>${item.created_at}</td>
             </tr>`;
@@ -30,7 +32,7 @@ $(document).ready(() => {
     };
 
     const uiRenderInventory = (items) => {
-        const container = $("#inventory_table"); // descending dapat to 
+        const container = $("#inventory_table");
         container.empty();
         $.each(items, (index, item) => {
             const row = `<tr>
@@ -39,7 +41,7 @@ $(document).ready(() => {
                 <td>${item.item_name}</td>
                 <td>${item.description}</td>
                 <td>${item.item_price}</td>
-                <td><img src="${item.image}" alt="${item.item_name}" width="50"></td>
+                <td><img src="data:image/jpeg;base64,${item.image}" width="50"></td>
                 <td>${item.stock}</td>
                 <td>${item.created_at}</td>
                 <td>
@@ -50,22 +52,36 @@ $(document).ready(() => {
         });
     };
 
-//edit user button
-    $(document).on("click", ".btn-edititem", function() {
-        const itemId = $(this).data("id");
+    $("#add_item_form").on("submit", function(e) {
+    e.preventDefault();
+        // Create a FormData object
+        const formData = new FormData();
+
+        // Append text fields
+        formData.append("sku", $("#add_sku").val());
+        formData.append("item_name", $("#add_item_name").val());
+        formData.append("description", $("#add_description").val());
+        formData.append("item_price", $("#add_item_price").val());
+        formData.append("stock", $("#add_stock").val());
+
+        const imageFile = $("#add_image")[0].files[0]; // make sure your input has id="add_image"
+        if (imageFile) {
+            formData.append("image", imageFile);
+        }
+
         $.ajax({
-            url: `../includes/functions/update_items.php?item_id=${itemId}`,
-            type: "GET",
-            datatype: "json",
-            success: (res) => {
-                const selectedItem = res.data;
-                $("#edit_item_id").val(selectedItem.item_id);
-                $("#update_skucode").val(selectedItem.sku);
-                $("#update_itemname").val(selectedItem.item_name);
-                $("#update_descripton").val(selectedItem.description);
-                $("#update_price").val(selectedItem.item_price);
-                $("#update_stock").val(selectedItem.stock);
-            }   
+            url: "../includes/functions/add_items.php", // replace with your API path
+            type: "POST",
+            data: formData,
+            processData: false, // important for FormData
+            contentType: false, // important for FormData
+            success: function(res) {
+                console.log(res);
+                // handle success, e.g., show message, refresh table
+            },
+            error: function(err) {
+                console.error(err);
+            }
         });
     });
 });

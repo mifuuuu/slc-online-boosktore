@@ -63,8 +63,8 @@
         </tbody>
     </table>
 </div>
-<script src="../assets/js/get_orders.js"></script>
-<script src="../assets/js/get_items.js"></script>
+<script src="../assets/js/orders.js"></script>
+<script src="../assets/js/items.js"></script>
 <?php require_once "../includes/footer.php"; ?>
 </body>
 </html>

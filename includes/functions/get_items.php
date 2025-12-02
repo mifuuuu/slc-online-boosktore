@@ -11,7 +11,7 @@
     require_once '../db.php';
 
     try {
-         $sql = "SELECT * FROM items ORDER BY item_id DESC";
+         $sql = "SELECT * FROM items";
          $stmt = $conn->prepare($sql);
          $stmt->execute();
          $items= $stmt->fetchAll(PDO::FETCH_ASSOC);

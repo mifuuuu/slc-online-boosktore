@@ -23,4 +23,88 @@ td{
     color: black;
 }
 
-/* admin dashboard - inventory */
+
+/* Trigger button ADD ITEM */
+.add-btn {
+  padding: 10px 20px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.add-btn:hover {
+  background: #0056b3;
+}
+
+/* Modal Background */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.close-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Make form inputs stack vertically */
+.add_users_form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* space between inputs */
+}
+
+/* Style input fields */
+.add_users_form input {
+    box-sizing: border-box; /* Prevents overflow */
+    width: 100%;            /* Fit inside the modal */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Style the submit button */
+.add_users_form button {
+    padding: 10px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add_users_form button:hover {
+    background: #0056b3;
+}
+
+/* Modal Box */
+.modal {
+  background: #fff;
+  width: 400px;
+  max-width: 90%;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  animation: fadeIn 0.2s ease;
+  box-sizing: border-box;
+}

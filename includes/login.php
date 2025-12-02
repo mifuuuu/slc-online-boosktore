@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             // Redirect based on role
             if ($user["userlevel"] === "admin") {
-                header("Location: ../admin/admin_dashboard.php");
+                header("Location: ../admin/admin_home.php");
                 exit;
             } elseif ($user["userlevel"] === "staff") {
                 echo "Your userlevel is staff.<br><br>";

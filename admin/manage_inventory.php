@@ -12,8 +12,8 @@
 </head>
 <body>
     <h2>Add Items to Inventory</h2>
-        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#itemModal"> Add Item </button>
-        <?php require_once "../includes/modal/item_modals.php"; ?>
+        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#additemModal"> Add Item </button>
+        
     <h2>Inventory</h2>
     <table>
         <thead>
@@ -32,8 +32,8 @@
         <tbody id="inventory_table"></tbody>
     </table>
 
-    <script src="../assets/js/items.js"></script>
-
+<script src="../assets/js/items.js"></script>
+<?php require_once "../includes/modal/item_modals.php"; ?>
 <?php require_once "../includes/footer.php"; ?>
 </body>
 </html>

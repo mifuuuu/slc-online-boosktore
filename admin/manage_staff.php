@@ -30,7 +30,6 @@
             </thead>
             <tbody id="users_table_body"></tbody>
         </table>
-
 <script src="../assets/js/user.js"></script>
 <?php require_once "../includes/modal/item_modals.php"; ?>
 <?php require_once "../includes/footer.php"; ?>

@@ -1,4 +1,4 @@
-<!-- add button -->
+<!-- add item button -->
 <div class="modal fade" id="additemModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -37,7 +37,7 @@
   </div>
 </div>
 
-<!-- edit button -->
+<!-- edit item button -->
 <div class="modal fade" id="edititemModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -79,7 +79,7 @@
   </div>
 </div>
 
-<!-- add/edit user modal -->
+<!-- add user modal -->
 <div class="modal fade" id="adduserModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -88,16 +88,16 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="edit_user_form" enctype="multipart/form-data" method="POST">  
+        <form id="add_user_form" enctype="multipart/form-data" method="POST">  
           <input type="hidden" id="user_id">
 
           <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Username" id="username" required>
+            <input type="text" class="form-control" placeholder="Username" id="add_username" required>
           </div>
 
           <div class="mb-3">
             <div class="input-group">
-              <input type="password" class="form-control" placeholder="Password" id="password" required>
+              <input type="password" class="form-control" placeholder="Password" id="add_password" required>
               <button class="btn btn-outline-secondary" type="button" id="togglePassword">
                 <i class="bi bi-eye"></i>
               </button>
@@ -105,30 +105,22 @@
           </div>
 
           <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Full Name" id="fullname" required>
+            <input type="text" class="form-control" placeholder="Full Name" id="add_fullname" required>
           </div>
 
           <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Email" id="email" required>
+            <input type="text" class="form-control" placeholder="Email" id="add_email" required>
           </div>
 
           <div class="mb-3">
-            <select class="form-control" id="userlevel" required>
+            <select class="form-control" id="add_userlevel" required>
               <option value="">Select User Level</option>
               <option value="admin">Admin</option>
               <option value="staff">Staff</option>
             </select>
           </div>
 
-          <div class="mb-3">
-            <select class="form-control" id="status" required>
-              <option value="">Select Status</option>
-              <option value="1">1</option>
-              <option value="0">0</option>
-            </select>
-          </div>
-
-          <button type="submit" class="btn btn-primary w-100" id="saveUserBtn">Save Changes</button>
+          <button type="submit" class="btn btn-primary w-100" id="addUserBtn">Add User</button>
         </form>
       </div>
     </div>
@@ -147,3 +139,50 @@ $(document).ready(() => {
 });
 </script>
 
+<!-- edit user modal -->
+<div class="modal fade" id="edituserModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="edit_user_form" enctype="multipart/form-data" method="POST">  
+          <input type="hidden" id="user_id">
+
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Username" id="edit_username" required>
+          </div>
+
+          <div class="mb-3">
+            <div class="input-group">
+              <input type="password" class="form-control" placeholder="Password" id="edit_password" required>
+              <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Full Name" id="edit_fullname" required>
+          </div>
+
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Email" id="edit_email" required>
+          </div>
+
+          <div class="mb-3">
+            <select class="form-control" id="edit_userlevel" required>
+              <option value="">Select User Level</option>
+              <option value="admin">Admin</option>
+              <option value="staff">Staff</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100" id="editUserBtn">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

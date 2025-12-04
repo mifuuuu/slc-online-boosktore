@@ -45,6 +45,53 @@ $(document).ready(() => {
         $("#inactiveUsersCount").text(inactiveCount);
     };
 
-// add user function
+// ADD USER FUNCTION
+    $("#add_user_form").on("submit", function (e) {
+        e.preventDefault();
 
+        const formData = new FormData();
+
+        // Collect form values
+        formData.append("username", $("#add_username").val());
+        formData.append("password", $("#add_password").val());
+        formData.append("fullname", $("#add_fullname").val());
+        formData.append("email", $("#add_email").val());
+        formData.append("userlevel", $("#add_userlevel").val());
+        $.ajax({
+            url: "../includes/functions/add_users.php",
+            type: "POST",
+            data: formData,
+            processData: false,   // Required for FormData
+            contentType: false,   // Required for FormData
+            success: function (res) {
+                console.log(res);
+                $("#add_user_form")[0].reset();
+
+                // Optional: close modal if you have one
+                // $("#addUserModal").modal("hide");
+            },
+        });
+    });
+
+// EDIT USER BUTTON
+    $(document).on("click", ".btn-edituser", function () {
+        const userId = $(this).data("id"); // This is user_id
+
+        $.ajax({
+            url: "../includes/functions/get_users.php",
+            type: "GET",
+            dataType: "json",
+            data: { user_id: userId }, // Correct key for database
+            success: (res) => {
+                const user = res.data;
+
+                $("#edit_user_id").val(user.user_id);   // MUST match backend key
+                $("#edit_username").val(user.username);
+                $("#edit_fullname").val(user.fullname);
+                $("#edit_email").val(user.email);
+                $("#edit_userlevel").val(user.userlevel);
+                $("#editUserModal").modal("show");
+            },
+        });
+    });
 });

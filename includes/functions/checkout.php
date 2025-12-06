@@ -34,13 +34,12 @@ try {
     $payment_method = $_POST['payment_method'];
 
     $payment_status = 'pending';
-    $order_status = 'processing';
     $created_at = date('Y-m-d H:i:s');
 
     // Insert into database using PDO
     $sql = "INSERT INTO orders 
-            (order_code, student_name, student_id, total, payment_method, payment_status, order_status, created_at)
-            VALUES (:order_code, :student_name, :student_id, :total, :payment_method, :payment_status, :order_status, :created_at)";
+            (order_code, student_name, student_id, total, payment_method, payment_status, created_at)
+            VALUES (:order_code, :student_name, :student_id, :total, :payment_method, :payment_status, :created_at)";
     $stmt = $conn->prepare($sql);
 
     $stmt->bindParam(':order_code', $order_code);
@@ -49,7 +48,6 @@ try {
     $stmt->bindParam(':total', $total);
     $stmt->bindParam(':payment_method', $payment_method);
     $stmt->bindParam(':payment_status', $payment_status);
-    $stmt->bindParam(':order_status', $order_status);
     $stmt->bindParam(':created_at', $created_at);
 
     if ($stmt->execute()) {

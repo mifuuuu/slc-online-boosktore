@@ -15,23 +15,25 @@
 <div class="container">
     <h1>Staff Dashboard</h1>
     
+    <!-- Orders Section -->
+    <h2>Orders</h2>
+    <div class="orders-cards" id="ordersCardsContainer"><!-- Order cards will appear here --></div>
+
+
     <!-- Stats Cards -->
-     <h1>statistics</h1>
-        <div class="stats">
-            <div class="card">
-                <p>Total Pending Orders</p>
-                <h2 id="pendingCount">0</h2>
-            </div>
+    <h2>Statistics</h2>
+    <div class="stats">
+        <div class="card">
+            <p>Total Pending Orders</p>
+            <h2 id="pendingCount">0</h2>
         </div>
-
-        <div class="stats">
-            <div class="card">
-                <p>Total Completed Orders</p>
-                <h2 id="completedCount">0</h2>
-            </div>
+        <div class="card">
+            <p>Total Completed Orders</p>
+            <h2 id="completedCount">0</h2>
         </div>
+    </div>
 
-        <!-- Low Stock Alerts -->
+    <!-- Low Stock Alerts -->
     <h2>Low Stock Items</h2>
     <table>
         <thead>
@@ -47,8 +49,12 @@
         <tbody id="low_on_stock_items">
         </tbody>
     </table>
+
+</div>
+
 <script src="../assets/js/orders.js"></script>
 <script src="../assets/js/staff_items.js"></script>
+<?php include_once "../includes/modal/modals.php"; ?>
 <?php require_once "../includes/footer.php"; ?>
 </body>
 </html>

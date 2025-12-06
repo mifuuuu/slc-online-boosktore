@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 header("Location: ../admin/admin_home.php");
                 exit;
             } elseif ($user["userlevel"] === "staff") {
-                echo "Your userlevel is staff.<br><br>";
+                header("Location: ../staff/staff_dashboard.php");
                 exit;
             } else {
                 echo "Invalid credentials.<br><br>";

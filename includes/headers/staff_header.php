@@ -16,13 +16,13 @@ require_once __DIR__ . "/../authentication.php";
 
 <header>
     <div class="logo">
-        <h1>logo</h1>
+        <img src="../uploads/logo/slc-logo.png" alt="SLC Bookstore Logo" height="50">
         <h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
     </div>
     <nav>
         <a href="staff_dashboard.php">Home</a>
         <a href="manage_inventory.php">Inventory</a>
-        <a href="reports.php">Reports</a>
+        <!-- <a href="reports.php">Reports</a> -->
         <a href="../includes/logout.php" class="logout-btn">Logout</a>
     </nav>
 </header>

@@ -16,7 +16,7 @@ require_once __DIR__ . "/../authentication.php";
 
 <header>
     <div class="logo">
-        <h1>logo</h1>
+        <img src="../uploads/logo/slc-logo.png" alt="SLC Bookstore Logo" height="50">
         <h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
     </div>
     <nav>

@@ -307,9 +307,90 @@ $(document).ready(function() {
     </div>
   </div>
 </div>
+<!-- =======================
+     Edit Order Modal
+======================= -->
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="orderModalLabel">Edit Order</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Order ID:</strong> <span id="modalOrderId"></span></p>
+        <p><strong>Student Name:</strong> <span id="modalStudentName"></span></p>
+        <p><strong>Student ID:</strong> <span id="modalStudentId"></span></p>
+        <p><strong>Total:</strong> <span id="modalTotal"></span></p>
+        <p>
+          <strong>Payment Status:</strong> 
+          <select id="modalPaymentStatus" class="form-select form-select-sm">
+            <option value="pending">Pending</option>
+            <option value="completed">Completed</option>
+          </select>
+        </p>
+        <p><strong>Order Date:</strong> <span id="modalCreatedAt"></span></p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-primary" id="saveOrderChanges">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- =======================
+     Detailed Order Modal
+======================= -->
+<div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="orderDetailsModalLabel">Order Full Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Order ID:</strong> <span id="detailOrderId"></span></p>
+        <p><strong>Student Name:</strong> <span id="detailStudentName"></span></p>
+        <p><strong>Student ID:</strong> <span id="detailStudentId"></span></p>
+        <p><strong>Total:</strong> <span id="detailTotal"></span></p>
+        <p><strong>Payment Status:</strong> <span id="detailPaymentStatus"></span></p>
+        <p><strong>Order Date:</strong> <span id="detailCreatedAt"></span></p>
+        <hr>
+        <div id="orderItemsContainer">
+          <!-- List all items in the order -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-success" id="processOrderBtn">Process This Order</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-
+<!-- =======================
+     Verify Order Code Modal
+======================= -->
+<div class="modal fade" id="verifyOrderModal" tabindex="-1" aria-labelledby="verifyOrderModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="verifyOrderModalLabel">Verify Order Code</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>Please enter the order code to process this order:</p>
+        <input type="text" id="verifyOrderCodeInput" class="form-control" placeholder="Enter order code">
+        <small class="text-danger mt-2" id="verifyErrorMsg" style="display:none;">Incorrect order code. Try again.</small>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" id="confirmVerifyBtn">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
 $(document).on("click", "#addtogglePassword", function() {

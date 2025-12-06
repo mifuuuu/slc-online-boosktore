@@ -80,7 +80,14 @@ $(document).ready(() => {
             }
         });
     });
-
+    
+        // ✅ Close success modal on OK
+    $("#userSuccessOkBtn").on("click", function () {
+        const successModal = bootstrap.Modal.getInstance($("#successAddModal"));
+        const adduserModal = bootstrap.Modal.getInstance($("#adduserModal"));
+        successModal.hide();
+        adduserModal.hide();
+    });
     // Edit User Button
     $(document).on("click", ".btn-edituser", function() {
         const userId = $(this).data("id");
@@ -150,7 +157,6 @@ $(document).ready(() => {
                         const editModal = bootstrap.Modal.getInstance(document.getElementById("edituserModal"));
                         if (editModal) editModal.hide();
 
-                        // Reload users table
                         getUsers();
                     });
                 } else {

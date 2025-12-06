@@ -12,6 +12,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 }
 
 $itemId = isset($_GET['item_id']) ? intval($_GET['item_id']) : null;
+$includeMime = isset($_GET['with_mime']) && $_GET['with_mime'] === 'true';
+
+// Helper function to detect MIME type from binary
+function getImageMimeType($imageData) {
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    return $finfo->buffer($imageData);
+}
 
 try {
     if ($itemId) {
@@ -21,9 +28,14 @@ try {
         $stmt->execute();
         $item = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Convert BLOB to Base64 if it exists
+        // Convert BLOB
         if ($item && !empty($item['image'])) {
-            $item['image'] = base64_encode($item['image']);
+            if ($includeMime) {
+                $mime = getImageMimeType($item['image']);
+                $item['image'] = 'data:' . $mime . ';base64,' . base64_encode($item['image']);
+            } else {
+                $item['image'] = base64_encode($item['image']);
+            }
         }
 
         $responseData = $item;
@@ -34,10 +46,14 @@ try {
         $stmt->execute();
         $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Convert each BLOB to Base64
         foreach ($items as &$i) {
             if (!empty($i['image'])) {
-                $i['image'] = base64_encode($i['image']);
+                if ($includeMime) {
+                    $mime = getImageMimeType($i['image']);
+                    $i['image'] = 'data:' . $mime . ';base64,' . base64_encode($i['image']);
+                } else {
+                    $i['image'] = base64_encode($i['image']);
+                }
             }
         }
 

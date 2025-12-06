@@ -4,7 +4,6 @@
                 url: "../includes/functions/get_items.php",
                 type: "GET",
                 success: (res) => {
-                    // filtering logic, gets low stock if stock goes to 10
                     const lowStockItems = res.data.filter(item => item.stock <= 10);
                     uiRender(lowStockItems);
                     uiRenderInventory(res.data);
@@ -17,11 +16,12 @@
             const container = $("#low_on_stock_items");
             container.empty();
             $.each(items, (index, item) => {
+                const imgSrc = item.image ? `data:image/jpeg;base64,${item.image}` : '';
                 const row = `<tr>
                     <td>${index + 1}</td>
                     <td>${item.sku}</td>
                     <td>${item.item_name}</td>
-                    <td><img src="data:image/jpeg;base64,${item.image}" width="50"></td>
+                    <td><img src="${imgSrc}" width="50"></td>
                     <td>${item.stock}</td>
                     <td>${item.created_at}</td>
                 </tr>`;
@@ -33,13 +33,14 @@
             const container = $("#inventory_table");
             container.empty();
             $.each(items, (index, item) => {
+                const imgSrc = item.image ? `data:image/jpeg;base64,${item.image}` : '';
                 const row = `<tr>
                     <td>${index + 1}</td>
                     <td>${item.sku}</td>
                     <td>${item.item_name}</td>
                     <td>${item.description}</td>
                     <td>${item.item_price}</td>
-                    <td><img src="data:image/jpeg;base64,${item.image}" width="50"></td>
+                    <td><img src="${imgSrc}" width="50"></td>
                     <td>${item.stock}</td>
                     <td>${item.created_at}</td>
                     <td>
@@ -49,7 +50,6 @@
                 container.append(row);
             });
         };
-
     // Add function for adding items
         $("#add_item_form").on("submit", function(e) {
             e.preventDefault();

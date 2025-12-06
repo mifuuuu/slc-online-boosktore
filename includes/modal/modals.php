@@ -219,6 +219,97 @@
     </div>
 </div>
 
+<!-- checkout modal -->
+<div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="checkoutModalLabel">Checkout</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Your total is: ₱ <span id="modalTotal">0.00</span></p>
+
+        <form id="checkoutForm">
+          <!-- Student Name -->
+          <div class="mb-3">
+            <label for="studentName" class="form-label">Student Name</label>
+            <input type="text" class="form-control" id="studentName" required>
+          </div>
+
+          <!-- Student ID -->
+          <div class="mb-3">
+            <label for="studentId" class="form-label">Student ID</label>
+            <input type="text" class="form-control" id="studentId" required>
+          </div>
+
+          <!-- Payment Method -->
+          <div class="mb-3">
+            <label for="paymentMethod" class="form-label">Payment Method</label>
+            <select class="form-select" id="paymentMethod" required>
+              <option value="">-- Select Payment Method --</option>
+              <option value="online">Online Payment</option>
+              <option value="counter">Pay on the Counter</option>
+            </select>
+          </div>
+
+          <!-- Online Payment Options (shown only if Online Payment selected) -->
+          <div class="mb-3" id="onlinePaymentOptions" style="display:none;">
+            <label for="onlineOption" class="form-label">Choose Online Platform</label>
+            <select class="form-select" id="onlineOption">
+              <option value="">-- Select Platform --</option>
+              <option value="gcash">GCash</option>
+              <option value="paymaya">PayMaya</option>
+              <option value="gotyme">GoTyme</option>
+              <option value="bank">Bank Transfer</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-success" id="confirmCheckout">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function() {
+  // Show/hide online payment options
+  $("#paymentMethod").on("change", function() {
+    if ($(this).val() === "online") {
+      $("#onlinePaymentOptions").show();
+      $("#onlineOption").attr("required", true);
+    } else {
+      $("#onlinePaymentOptions").hide();
+      $("#onlineOption").attr("required", false);
+    }
+  });
+});
+</script>
+
+<!-- Order Confirmation Modal -->
+<div class="modal fade" id="orderConfirmationModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-4">
+      <div class="modal-header border-0">
+        <h5 class="modal-title w-100">Order Confirmed!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Your order has been placed successfully.</p>
+        <p style="font-size: 2rem; font-weight: bold;" id="generatedOrderCode"></p>
+      </div>
+      <div class="modal-footer border-0 justify-content-center">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 <script>
 $(document).on("click", "#addtogglePassword", function() {

@@ -9,12 +9,11 @@
 <header>
     <div class="logo">
         <img src="../uploads/logo/slc-logo.png" alt="SLC Logo">
-        <h1>SLC Online Bookstore</h1>
+        <h1>Welcome to SLC Online Bookstore</h1>
     </div>
 
     <nav>
-        <a href="shop.php">Home</a>
-        <a href="aboutus.php">About Us</a>
+        <a href="shop.php">Shop</a>
         <a href="cart.php" id="cart-icon" class="cart-link">
             🛒 <span id="cart-count">0</span>
         </a>
@@ -27,9 +26,7 @@
         const count = cart.reduce((sum, item) => sum + item.quantity, 0);
         document.getElementById("cart-count").innerText = count;
     }
-
     updateCartCount();
-
     window.addEventListener('storage', updateCartCount);
 </script>
 

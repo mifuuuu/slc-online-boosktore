@@ -61,37 +61,102 @@ $(document).ready(() => {
             url: "../includes/functions/add_users.php",
             type: "POST",
             data: formData,
+            dataType: "json",
             processData: false,   // Required for FormData
             contentType: false,   // Required for FormData
             success: function (res) {
                 console.log(res);
-                $("#add_user_form")[0].reset();
 
-                // Optional: close modal if you have one
-                // $("#addUserModal").modal("hide");
-            },
+                if (res.success) {
+                    $("#add_user_form")[0].reset();
+
+                    const successModal = new bootstrap.Modal($("#successAddModal"));
+                    successModal.show();
+
+                    getUsers();
+                } else {
+                    alert("Error: " + res.message);
+                }
+            }
         });
     });
 
-// EDIT USER BUTTON
-    $(document).on("click", ".btn-edituser", function () {
-        const userId = $(this).data("id"); // This is user_id
-
+    // Edit User Button
+    $(document).on("click", ".btn-edituser", function() {
+        const userId = $(this).data("id");
         $.ajax({
             url: "../includes/functions/get_users.php",
             type: "GET",
             dataType: "json",
-            data: { user_id: userId }, // Correct key for database
+            data: { user_id: userId },
             success: (res) => {
-                const user = res.data;
+                if (res.success && res.data) {
+                    const user = res.data;
 
-                $("#edit_user_id").val(user.user_id);   // MUST match backend key
-                $("#edit_username").val(user.username);
-                $("#edit_fullname").val(user.fullname);
-                $("#edit_email").val(user.email);
-                $("#edit_userlevel").val(user.userlevel);
-                $("#editUserModal").modal("show");
-            },
+                    $("#edit_user_id").val(user.user_id);
+                    $("#edit_username").val(user.username);
+                    $("#edit_fullname").val(user.fullname);
+                    $("#edit_email").val(user.email);
+                    $("#edit_userlevel").val(user.userlevel);
+
+                    // Optional: leave password blank for security
+                    $("#edit_password").val("");
+
+                    // Open modal
+                    const editModal = new bootstrap.Modal(document.getElementById("edituserModal"));
+                    editModal.show();
+                } else {
+                    alert(res.message || "Failed to fetch user data");
+                }
+            }
+        });
+    });
+
+    // Edit User Submit
+    $("#edit_user_form").on("submit", function(e) {
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append("user_id", $("#edit_user_id").val());
+        formData.append("username", $("#edit_username").val());
+        formData.append("fullname", $("#edit_fullname").val());
+        formData.append("email", $("#edit_email").val());
+        formData.append("userlevel", $("#edit_userlevel").val());
+        formData.append("_method", "PUT"); // optional for backend
+
+        $.ajax({
+            url: "../includes/functions/update_users.php",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: function(res) {
+                console.log(res);
+
+                if (res.success) {
+                    // Reset form
+                    $("#edit_user_form")[0].reset();
+
+                    // Show Edit User Success Modal
+                    const successModal = new bootstrap.Modal(document.getElementById("editUserSuccessModal"));
+                    successModal.show();
+
+                    // OK button handler
+                    $("#editUserSuccessOkBtn").off("click").on("click", function() {
+                        successModal.hide();
+
+                        // Close edit modal
+                        const editModal = bootstrap.Modal.getInstance(document.getElementById("edituserModal"));
+                        if (editModal) editModal.hide();
+
+                        // Reload users table
+                        getUsers();
+                    });
+                } else {
+                    alert("Error: " + res.message);
+                }
+            }
         });
     });
 });

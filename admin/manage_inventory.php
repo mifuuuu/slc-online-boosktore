@@ -31,7 +31,7 @@
         </table>
 
 <script src="../assets/js/items.js"></script>
-<?php require_once "../includes/modal/item_modals.php"; ?>
+<?php require_once "../includes/modal/modals.php"; ?>
 <?php require_once "../includes/footer.php"; ?>
 </body>
 </html>

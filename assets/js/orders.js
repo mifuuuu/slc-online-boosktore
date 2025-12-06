@@ -28,10 +28,6 @@ $(document).ready(() => {
     // ---------------------------
     const renderRecentOrdersTable = () => {
         const tbody = $("#recent_orders_table_body");
-        if (!tbody.length) {
-            console.error("Recent orders table body not found!");
-            return;
-        }
 
         tbody.empty();
 

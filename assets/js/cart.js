@@ -147,34 +147,36 @@ $(document).ready(function() {
             cart_items: cart // optional: if you want to store items too
         };
 
-        // Send to PHP via AJAX
-        $.ajax({
-            url: '../includes/functions/checkout.php',
-            type: 'POST',
-            data: postData,
-            success: function(response) {
-                if (response.success) {
-                    // Set order code in confirmation modal
-                    $("#generatedOrderCode").text(response.order_code);
+            // Send to PHP via AJAX as JSON
+            $.ajax({
+                url: '../includes/functions/checkout.php',
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: JSON.stringify(postData),
+                success: function(response) {
+                    if (response && response.success) {
+                        // Show generated order code to user
+                        alert(`Order placed successfully!\nYour Order Code: ${orderCode}`);
 
-                    // Show the confirmation modal
-                    const confirmationModal = new bootstrap.Modal(document.getElementById('orderConfirmationModal'));
-                    confirmationModal.show();
+                        // Clear cart
+                        cart = [];
+                        saveCart();
+                        renderCart();
 
-                    // Clear cart
-                    cart = [];
-                    saveCart();
-                    renderCart();
-
-                    // Close checkout modal
-                    const checkoutModalEl = document.getElementById('checkoutModal');
-                    const modal = bootstrap.Modal.getInstance(checkoutModalEl);
-                    if (modal) modal.hide();
-                } else {
-                    alert(response.message || "Something went wrong.");
+                        // Close modal
+                        const checkoutModalEl = document.getElementById('checkoutModal');
+                        const modal = bootstrap.Modal.getInstance(checkoutModalEl);
+                        modal.hide();
+                    } else {
+                        alert(response && response.message ? response.message : 'Something went wrong.');
+                    }
+                },
+                error: function(xhr, status, err) {
+                    console.error('Checkout error:', status, err, xhr.responseText);
+                    alert("Something went wrong. Please try again.");
                 }
-            },
-        });
+            });
     });
     renderCart();
     updateCartCount();

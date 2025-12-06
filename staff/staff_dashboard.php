@@ -19,7 +19,6 @@
     <h2>Orders</h2>
     <div class="orders-cards" id="ordersCardsContainer"><!-- Order cards will appear here --></div>
 
-
     <!-- Stats Cards -->
     <h2>Statistics</h2>
     <div class="stats">

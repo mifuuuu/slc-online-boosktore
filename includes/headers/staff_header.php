@@ -1,0 +1,29 @@
+<?php
+// Start session and authentication check
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once __DIR__ . "/../authentication.php";
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../assets/css/admin_header.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <h1>logo</h1>
+        <h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
+    </div>
+    <nav>
+        <a href="staff_dashboard.php">Home</a>
+        <a href="manage_inventory.php">Inventory</a>
+        <a href="reports.php">Reports</a>
+        <a href="../includes/logout.php" class="logout-btn">Logout</a>
+    </nav>
+</header>
+<main>

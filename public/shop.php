@@ -6,6 +6,6 @@
   <title>SLC Bookstore</title>
 </head>
 <body>
-      sample
+
 </body>
 </html>

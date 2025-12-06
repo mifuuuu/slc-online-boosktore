@@ -1,3 +1,4 @@
+/* admin dashboard - homepage u.i */
 table{
     width: 100%;
     border-collapse: collapse;
@@ -20,4 +21,32 @@ td{
     background-color: rgb(129, 170, 245);
     font-weight: bold;
     color: black;
+}
+
+/* Make form inputs stack vertically */
+.add_users_form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* space between inputs */
+}
+
+/* Style input fields */
+.add_users_form input {
+    box-sizing: border-box; /* Prevents overflow */
+    width: 50%;            /* Fit inside the modal */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.add_users_form button {
+    padding: 10px;
+    background: #007bff;
+        width: 50%;  
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
 }

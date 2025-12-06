@@ -44,4 +44,5 @@ try {
         "success" => false
     ]);
 }
+
 ?>

@@ -10,7 +10,6 @@ require_once "authentication.php";
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo isset($page_title) ? $page_title : 'Dashboard'; ?></title>
     <link rel="stylesheet" href="../assets/css/admin_header.css">
 </head>
 <body>
@@ -21,7 +20,7 @@ require_once "authentication.php";
         <h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
     </div>
     <nav>
-        <a href="admin_dashboard.php">Home</a>
+        <a href="admin_home.php">Home</a>
         <a href="manage_inventory.php">Inventory</a>
         <a href="manage_staff.php">Staff</a>
         <a href="reports.php">Reports</a>
